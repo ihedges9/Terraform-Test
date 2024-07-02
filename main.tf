@@ -12,7 +12,7 @@ resource "aws_instance" "app_server" {
 }
 
 resource "aws_instance" "web_server" {
-  ami           = "ami-024ebc7de0fc64e44"
+  ami           = " ami-08068ef2743ad7862"
   instance_type = "t2.micro"
 
   tags = {
