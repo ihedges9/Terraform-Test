@@ -1,31 +1,23 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
+terraform {
+  required_providers {
+    aws = {
+      source  = "hashicorp/aws"
+      version = "~> 4.16"
+    }
+  }
+
+  required_version = ">= 1.2.0"
+}
 
 provider "aws" {
-  region = var.region
+  region  = "us-east-2"
 }
 
-data "aws_ami" "windows" {
-  most_recent = true
-
-  filter {
-    name   = "name"
-    values = ["windows/images/hvm-ssd/windows-focal-20.04-amd64-server-*"]
-  }
-
-  filter {
-    name   = "virtualization-type"
-    values = ["hvm"]
-  }
-
-  owners = ["099720109477"] # Canonical
-}
-
-resource "aws_instance" "windows" {
-  ami           = data.aws_ami.windows.id
-  instance_type = var.instance_type
+resource "aws_instance" "app_server" {
+  ami           = "ami-04df9ee4d3dfde202"
+  instance_type = "t2.micro"
 
   tags = {
-    Name = var.instance_name
+    Name = "ExampleAppServerInstance"
   }
 }
