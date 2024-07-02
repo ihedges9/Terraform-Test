@@ -21,7 +21,7 @@ data "aws_ami" "windows" {
   owners = ["099720109477"] # Canonical
 }
 
-resource "aws_instance" "ubuntu" {
+resource "aws_instance" "windows" {
   ami           = data.aws_ami.windows.id
   instance_type = var.instance_type
 
