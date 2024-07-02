@@ -6,6 +6,6 @@ output "instance_ami" {
 }
 
 #output "instance_arn" {
-#  value = aws_instance.windows.arn
+#  value = aws_instance.app_server.arn
 #}
 
